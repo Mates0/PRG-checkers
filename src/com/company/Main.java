@@ -43,37 +43,72 @@ public class Main {
             System.out.println();
         }
 
-        System.out.println("Černá hraje");
-        System.out.println("Vyber postavičku");
-        int i1 = sc.nextInt();
-        int j1 = sc.nextInt();
-        if (pole[i1][j1] == 1) {
-            System.out.println("Zadej kam se chceš posunout");
-            int i2 = sc.nextInt();
-            int j2 = sc.nextInt();
+        while (true) {
+            System.out.println("Černá hraje");
+            System.out.println("Vyber postavičku");
+            int i1 = sc.nextInt();
+            int j1 = sc.nextInt();
+            if (pole[i1][j1] == 1) {
+                System.out.println("Zadej kam se chceš posunout");
+                int i2 = sc.nextInt();
+                int j2 = sc.nextInt();
 
-            pole[i1][j1] = 0;
-            pole[i2][j2] = 1;
+                pole[i1][j1] = 0;
+                pole[i2][j2] = 1;
 
-            System.out.println();
-            for (int i = 0; i < pole.length; i++) {
-                for (int j = 0; j < pole[i].length; j++) {
-                    if (pole[i][j] == 1)
-                        System.out.print(blackCH);
-                    else if (pole[i][j] == 2)
-                        System.out.print(whiteCH);
-                    else {
-                        if ((i + j) % 2 == 0)
-                            System.out.print(black);
-                        else
-                            System.out.print(white);
-                    }
-                    System.out.print(" ");
-                }
                 System.out.println();
+                for (int i = 0; i < pole.length; i++) {
+                    for (int j = 0; j < pole[i].length; j++) {
+                        if (pole[i][j] == 1)
+                            System.out.print(blackCH);
+                        else if (pole[i][j] == 2)
+                            System.out.print(whiteCH);
+                        else {
+                            if ((i + j) % 2 == 0)
+                                System.out.print(black);
+                            else
+                                System.out.print(white);
+                        }
+                        System.out.print(" ");
+                    }
+                    System.out.println();
+                }
+            } else {
+                System.out.println("Nevalidní vstup");
             }
-        } else {
-            System.out.println("Nevalidní vstup");
+
+            System.out.println("Bíla hraje");
+            System.out.println("Vyber postavičku");
+            i1 = sc.nextInt();
+            j1 = sc.nextInt();
+            if (pole[i1][j1] == 2) {
+                System.out.println("Zadej kam se chceš posunout");
+                int i2 = sc.nextInt();
+                int j2 = sc.nextInt();
+
+                pole[i1][j1] = 0;
+                pole[i2][j2] = 2;
+
+                System.out.println();
+                for (int i = 0; i < pole.length; i++) {
+                    for (int j = 0; j < pole[i].length; j++) {
+                        if (pole[i][j] == 1)
+                            System.out.print(blackCH);
+                        else if (pole[i][j] == 2)
+                            System.out.print(whiteCH);
+                        else {
+                            if ((i + j) % 2 == 0)
+                                System.out.print(black);
+                            else
+                                System.out.print(white);
+                        }
+                        System.out.print(" ");
+                    }
+                    System.out.println();
+                }
+            } else {
+                System.out.println("Nevalidní vstup");
+            }
         }
     }
 }
