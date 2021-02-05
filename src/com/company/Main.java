@@ -92,7 +92,7 @@ public class Main {
                         pole[i1 + 1][j1 + 1] = 0;
                         pole[i1][j1] = 0;
                     }
-                    else if (pole[i1 + 1][j1 - 1] == 1 && pole[i1 + 2][j1 - 2] == 0) {
+                    else if (pole[i1 + 1][j1 - 1] == 1 && pole[i1 + 2][j1 + 2] == 0) {
                         pole[i1 + 2][j1 - 2] = 2;
                         pole[i1 + 1][j1 - 1] = 0;
                         pole[i1][j1] = 0;
@@ -168,7 +168,7 @@ public class Main {
                                 pole[i1 - 1][j1 + 1] = 0;
                                 pole[i1][j1] = 0;
                             }
-                            else if (pole[i1 + 1][j1 + 1] == 1 && pole[i1 + 2][j1 - 2] == 0) {
+                            else if (pole[i1 + 1][j1 + 1] == 1 && pole[i1 + 2][j1 + 2] == 0) {
                                 pole[i1 + 2][j1 - 2] = 2;
                                 pole[i1 + 1][j1 - 1] = 0;
                                 pole[i1][j1] = 0;
