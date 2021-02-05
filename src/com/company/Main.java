@@ -28,6 +28,8 @@ public class Main {
                 {-1, 2, -1, 2, -1, 2, -1, 2}
         };
 
+        System.out.println("Ukončete program číslem 99");
+
         for (int i = 0; i < pole.length; i++) {
             for (int j = 0; j < pole[i].length; j++) {
                 if (pole[i][j] == 1)
@@ -50,8 +52,12 @@ public class Main {
                 System.out.println("Černá hraje");
                 System.out.println("Vyber postavičku(y)");
                 int i1 = sc.nextInt();
+                if (i1 == 99)
+                    System.exit(0);
                 System.out.println("Vyber postavičku(x)");
                 int j1 = sc.nextInt();
+                if (j1 == 99)
+                    System.exit(0);
                 if (i1 <= -1 || j1 <= -1 || i1 >= 8 || j1 >= 8) {
                     System.out.println("Nevalidní vstup");
                     break;
@@ -59,9 +65,12 @@ public class Main {
                 if (pole[i1][j1] == 1) {
                     System.out.println("Zadej kam se chceš posunout(y)");
                     int i2 = sc.nextInt();
+                    if (i2 == 99)
+                        System.exit(0);
                     System.out.println("Zadej kam se chceš posunout(x)");
                     int j2 = sc.nextInt();
-
+                    if (j2 == 99)
+                        System.exit(0);
                     if (i2 <= -1 || j2 <= -1 || i2 >= 8 || j2 >= 8) {
                         System.out.println("Nevalidní vstup");
                         break;
@@ -78,8 +87,19 @@ public class Main {
                         System.out.println("-1 bíla postavička");
                     }
 
-                    pole[i1][j1] = 0;
-                    pole[i2][j2] = 1;
+                    if (pole[i1 + 1][j1 + 1] == 1 && pole[i1 + 2][j1 + 2] == 0) {
+                        pole[i1 + 2][j1 + 2] = 2;
+                        pole[i1 + 1][j1 + 1] = 0;
+                        pole[i1][j1] = 0;
+                    }
+                    else if (pole[i1 + 1][j1 - 1] == 1 && pole[i1 + 2][j1 - 2] == 0) {
+                        pole[i1 + 2][j1 - 2] = 2;
+                        pole[i1 + 1][j1 - 1] = 0;
+                        pole[i1][j1] = 0;
+                    } else {
+                        pole[i1][j1] = 0;
+                        pole[i2][j2] = 1;
+                    }
 
                     for (int i = 0; i < pole.length; i++) {
                         for (int j = 0; j < pole[i].length; j++) {
@@ -107,8 +127,12 @@ public class Main {
                         System.out.println("Bíla hraje");
                         System.out.println("Vyber postavičku(y)");
                         i1 = sc.nextInt();
+                        if (i1 == 99)
+                            System.exit(0);
                         System.out.println("Vyber postavičku(x)");
                         j1 = sc.nextInt();
+                        if (j1 == 99)
+                            System.exit(0);
                         if (i1 <= -1 || j1 <= -1 || i1 >= 8 || j1 >= 8) {
                             System.out.println("Nevalidní vstup");
                             continue;
@@ -116,8 +140,12 @@ public class Main {
                         if (pole[i1][j1] == 2) {
                             System.out.println("Zadej kam se chceš posunout(y)");
                             int i2 = sc.nextInt();
+                            if (i2 == 99)
+                                System.exit(0);
                             System.out.println("Zadej kam se chceš posunout(x)");
                             int j2 = sc.nextInt();
+                            if (j2 == 99)
+                                System.exit(0);
 
                             if (i2 <= -1 || j2 <= -1 || i2 >= 8 || j2 >= 8) {
                                 System.out.println("Nevalidní vstup");
@@ -135,8 +163,19 @@ public class Main {
                                 System.out.println("-1 černá postavička");
                             }
 
-                            pole[i1][j1] = 0;
-                            pole[i2][j2] = 2;
+                            if (pole[i1 - 1][j1 + 1] == 1 && pole[i1 - 2][j1 + 2] == 0) {
+                                pole[i1 - 2][j1 + 2] = 2;
+                                pole[i1 - 1][j1 + 1] = 0;
+                                pole[i1][j1] = 0;
+                            }
+                            else if (pole[i1 + 1][j1 + 1] == 1 && pole[i1 + 2][j1 - 2] == 0) {
+                                pole[i1 + 2][j1 - 2] = 2;
+                                pole[i1 + 1][j1 - 1] = 0;
+                                pole[i1][j1] = 0;
+                            } else {
+                                pole[i1][j1] = 0;
+                                pole[i2][j2] = 2;
+                            }
 
                             for (int i = 0; i < pole.length; i++) {
                                 for (int j = 0; j < pole[i].length; j++) {
