@@ -11,9 +11,11 @@ public class Main {
         String whiteCH = "○";
         String blackCH = "⬤";
 
-        //0 = nic
+        //-1 = white policko
+        //0 = black policko
         //1 = black
         //2 = white
+
 
         int[][] pole = {
                 {1, -1, 1, -1, 1, -1, 1, -1},
@@ -50,15 +52,30 @@ public class Main {
                 int i1 = sc.nextInt();
                 System.out.println("Vyber postavičku(x)");
                 int j1 = sc.nextInt();
+                if (i1 <= -1 || j1 <= -1 || i1 >= 8 || j1 >= 8) {
+                    System.out.println("Nevalidní vstup");
+                    break;
+                }
                 if (pole[i1][j1] == 1) {
                     System.out.println("Zadej kam se chceš posunout(y)");
                     int i2 = sc.nextInt();
                     System.out.println("Zadej kam se chceš posunout(x)");
                     int j2 = sc.nextInt();
 
+                    if (i2 <= -1 || j2 <= -1 || i2 >= 8 || j2 >= 8) {
+                        System.out.println("Nevalidní vstup");
+                        break;
+                    }
                     if (pole[i2][j2] == -1) {
                         System.out.println("Na toto pole se nejde posunout!");
                         break;
+                    }
+                    if (i1 >= i2) {
+                        System.out.println("S touto postavičkou se nelze vrátit zpátky!");
+                        break;
+                    }
+                    if (pole[i2][j2] == 2) {
+                        System.out.println("-1 bíla postavička");
                     }
 
                     pole[i1][j1] = 0;
@@ -92,15 +109,30 @@ public class Main {
                         i1 = sc.nextInt();
                         System.out.println("Vyber postavičku(x)");
                         j1 = sc.nextInt();
+                        if (i1 <= -1 || j1 <= -1 || i1 >= 8 || j1 >= 8) {
+                            System.out.println("Nevalidní vstup");
+                            continue;
+                        }
                         if (pole[i1][j1] == 2) {
                             System.out.println("Zadej kam se chceš posunout(y)");
                             int i2 = sc.nextInt();
                             System.out.println("Zadej kam se chceš posunout(x)");
                             int j2 = sc.nextInt();
 
+                            if (i2 <= -1 || j2 <= -1 || i2 >= 8 || j2 >= 8) {
+                                System.out.println("Nevalidní vstup");
+                                continue;
+                            }
                             if (pole[i2][j2] == -1) {
                                 System.out.println("Na toto pole se nejde posunout!");
-                                break;
+                                continue;
+                            }
+                            if (i1 <= i2) {
+                                System.out.println("S touto postavičkou se nelze vrátit zpátky!");
+                                continue;
+                            }
+                            if (pole[i2][j2] == 1) {
+                                System.out.println("-1 černá postavička");
                             }
 
                             pole[i1][j1] = 0;
@@ -124,9 +156,11 @@ public class Main {
                             }
                         } else {
                             System.out.println("Nevalidní vstup");
-                            break;
+                            continue;
                         }
+                        break;
                     }
+                    break;
                 }
             }
         }
